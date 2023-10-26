@@ -1,46 +1,40 @@
-﻿using Shape1.Abstract;
+﻿using ConsoleApp;
+using Shape1.Abstract;
 Console.WriteLine("Enter the shape");
 string? input = Console.ReadLine();
-double trianglePerimeter, triangleSurface, rectPerimeter, rectSurface, circlePerimeter, circleSurface;
 
 switch (input)
 {
     case "1":
-        Triangle triangle = new Triangle();
-        Console.WriteLine("Enter the first side");
-        string? TriangleSide1 = Console.ReadLine();
-        triangle.a = Convert.ToDouble(TriangleSide1);
-        Console.WriteLine("Enter the second side");
-        string? TriangleSide2 = Console.ReadLine();
-        triangle.b = Convert.ToDouble(TriangleSide2);
-        Console.WriteLine("Enter the third side");
-        string? TriangleSide3 = Console.ReadLine();
-        triangle.c = Convert.ToDouble(TriangleSide3);
-       
-        trianglePerimeter = triangle.Perimeter(triangle.a, triangle.b, triangle.c);
-        triangleSurface = triangle.Surface(triangle.a, triangle.b, triangle.c);
-      
+        Console.WriteLine("Enter the first side of triangle");
+        double TriangleSide1 = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Enter the second side of triangle");
+        double TriangleSide2 = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Enter the third side of triangle");
+        double TriangleSide3 = Convert.ToDouble(Console.ReadLine());
+        Shape triangle = new Triangle(TriangleSide1, TriangleSide2, TriangleSide3);
+        Console.WriteLine($"Perimeter of this triangle is {triangle.Perimeter()}");
+        Console.WriteLine($"Surface of this triangle is {triangle.Surface()}");
         break;
     case "2":
-        Rectangle rect = new();
-        Console.WriteLine("Enter the first side");
-        string? rectSide1 = Console.ReadLine();
-        rect.a = Convert.ToDouble(rectSide1);
-        Console.WriteLine("Enter the second side");
-        string? rectSide2 = Console.ReadLine();
-        rect.b = Convert.ToDouble(rectSide2);
-        rectPerimeter = rect.Perimeter(rect.a, rect.b);
-        rectSurface = rect.Surface(rect.a, rect.b);
-        Console.WriteLine($"Perimeter = {rectPerimeter}, Surface = {rectSurface}, ");
+        Console.WriteLine("Enter the first side of rectangle");
+        double RectSide1 = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Enter the second side of rectangle");
+        double RectSide2 = Convert.ToDouble(Console.ReadLine());
+        Shape rect = new Rect(RectSide1, RectSide2);
+        Console.WriteLine($"Perimeter of this triangle is {rect.Perimeter()}");
+        Console.WriteLine($"Surface of this triangle is {rect.Surface()}");
 
         break;
     case "3":
-        Circle circle = new Circle();
         Console.WriteLine("Enter the radius of circle");
-        string? circleSide = Console.ReadLine();
-        circle.r = Convert.ToDouble(circleSide);
-        circlePerimeter = circle.Perimeter(circle.r);
-        circleSurface = circle.Surface(circle.r);
-        Console.WriteLine($"Perimeter = {circlePerimeter}, Surface = {circleSurface}, ");
+        double radius = Convert.ToDouble(Console.ReadLine());
+        Shape circle = new Circle(radius);
+        Console.WriteLine($"Perimeter of this triangle is {circle.Perimeter()}");
+        Console.WriteLine($"Surface of this triangle is {circle.Surface()}");
+        break;
+
+    default:
+        Console.WriteLine("Please enter number between 1 to 3");
         break;
 }
